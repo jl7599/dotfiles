@@ -1,0 +1,90 @@
+" Use Vim settings, rather then Vi settings (much better!).
+" This must be first, because it changes other options as a side effect.
+set nocompatible
+
+
+"""""""""""
+" General "
+"""""""""""
+
+syntax on
+
+set number
+set history=500
+set autoread
+set showcmd
+set showmode
+set hidden
+
+" Search
+set incsearch
+set hlsearch
+set ignorecase
+set smartcase
+
+" Security
+set modelines=0
+set nomodeline
+
+" Allow backspace in insert mode
+set backspace=indent,eol,start
+
+" Disable cursor blink
+set gcr=a:blinkon0
+
+"Always show current position
+set ruler
+
+" Tab autocomplete and ignore
+set wildmode=list:longest,full
+set wildignore=*.pyc
+set wildignore=*.jpg,*.png,*.gif
+
+" Never recognizes leading zero number as octal number
+set nrformats-=octal
+
+let mapleader=","
+
+
+""""""""""
+" Vundle "
+""""""""""
+
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" Let Vundle manage Vundle
+Plugin 'VundleVim/Vundle.vim'
+
+" dracula theme
+Plugin 'dracula/vim', { 'name': 'dracula' }
+
+" Markdown
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+
+call vundle#end()
+
+
+"""""""""""""""
+" Indentation "
+"""""""""""""""
+
+filetype plugin on
+filetype indent on
+
+set autoindent
+set smartindent
+set smarttab
+set expandtab
+
+""""""""""
+" Custom "
+""""""""""
+
+colorscheme dracula
+
+" Markdown config
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_toc_autofit = 1
