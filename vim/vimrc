@@ -2,10 +2,34 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
+"==========================================
+" Initial Plugin
+"==========================================
 
-"""""""""""
-" General "
-"""""""""""
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/plugged')
+
+" Colorscheme https://github.com/sainnhe/forest-night
+Plug 'sainnhe/forest-night'
+
+" Syntax highlight https://github.com/sheerun/vim-polyglot
+Plug 'sheerun/vim-polyglot'
+
+" Markdown https://github.com/plasticboy/vim-markdown
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+
+call plug#end()
+
+
+"==========================================
+" General Settings
+"==========================================
 
 syntax on
 
@@ -45,32 +69,6 @@ set nrformats-=octal
 
 let mapleader=","
 
-
-""""""""""
-" Vundle "
-""""""""""
-
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-" Let Vundle manage Vundle
-Plugin 'VundleVim/Vundle.vim'
-
-" dracula theme
-Plugin 'dracula/vim', { 'name': 'dracula' }
-
-" Markdown
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-
-call vundle#end()
-
-
-"""""""""""""""
-" Indentation "
-"""""""""""""""
-
 filetype plugin on
 filetype indent on
 
@@ -79,12 +77,9 @@ set smartindent
 set smarttab
 set expandtab
 
-""""""""""
-" Custom "
-""""""""""
-
-colorscheme dracula
+colorscheme forest-night
 
 " Markdown config
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_toc_autofit = 1
+
