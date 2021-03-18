@@ -14,8 +14,8 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-" Colorscheme https://github.com/sainnhe/forest-night
-Plug 'sainnhe/forest-night'
+" Colorscheme https://github.com/sainnhe/gruvbox-material
+Plug 'sainnhe/gruvbox-material'
 
 " Syntax highlight https://github.com/sheerun/vim-polyglot
 Plug 'sheerun/vim-polyglot'
@@ -77,7 +77,14 @@ set smartindent
 set smarttab
 set expandtab
 
-colorscheme forest-night
+" Colorscheme config, see :help gruvbox-material.txt
+if has('termguicolors')
+  set termguicolors
+endif
+set background=dark
+let g:gruvbox_material_background = 'hard'
+"let g:gruvbox_material_background = 'soft'
+colorscheme gruvbox-material
 
 " Markdown config
 let g:vim_markdown_folding_disabled = 1
