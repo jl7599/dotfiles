@@ -17,6 +17,9 @@ call plug#begin('~/.vim/plugged')
 " Colorscheme https://github.com/sainnhe/gruvbox-material
 Plug 'sainnhe/gruvbox-material'
 
+" Airline https://github.com/vim-airline/vim-airline
+Plug 'vim-airline/vim-airline'
+
 " Syntax highlight https://github.com/sheerun/vim-polyglot
 Plug 'sheerun/vim-polyglot'
 
@@ -56,7 +59,7 @@ set backspace=indent,eol,start
 " Disable cursor blink
 set gcr=a:blinkon0
 
-"Always show current position
+" Always show current position
 set ruler
 
 " Tab autocomplete and ignore
@@ -85,6 +88,11 @@ set background=dark
 let g:gruvbox_material_background = 'hard'
 "let g:gruvbox_material_background = 'soft'
 colorscheme gruvbox-material
+
+" Airline config
+let g:airline_theme = 'gruvbox_material'
+let g:airline_section_z = airline#section#create(['%l/%L :%v'])
+let g:airline_section_y = airline#section#create_right([])
 
 " Markdown config
 let g:vim_markdown_folding_disabled = 1
