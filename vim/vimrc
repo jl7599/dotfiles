@@ -20,11 +20,17 @@ Plug 'sainnhe/gruvbox-material'
 " Airline https://github.com/vim-airline/vim-airline
 Plug 'vim-airline/vim-airline'
 
+" NERDTREE https://github.com/preservim/nerdtree
+Plug 'scrooloose/nerdtree'
+
 " Syntax highlight https://github.com/sheerun/vim-polyglot
 Plug 'sheerun/vim-polyglot'
 
 " Autocompletion https://github.com/davidhalter/jedi-vim
 Plug 'davidhalter/jedi-vim'
+
+" Flake8 https://github.com/nvie/vim-flake8
+Plug 'nvie/vim-flake8'
 
 " Markdown https://github.com/plasticboy/vim-markdown
 Plug 'godlygeek/tabular'
@@ -92,6 +98,10 @@ let g:gruvbox_material_background = 'hard'
 "let g:gruvbox_material_background = 'soft'
 colorscheme gruvbox-material
 
+" NERDTREE config
+map <F3> :NERDTreeMirror<CR>
+map <F3> :NERDTreeToggle<CR>
+
 " Airline config
 let g:airline_theme = 'gruvbox_material'
 let g:airline_section_z = airline#section#create(['%l/%L :%v'])
@@ -118,6 +128,9 @@ set t_Co=256
 " Autocompletion config
 let g:jedi#use_tabs_not_buffers = 1
 autocmd FileType python setlocal completeopt-=preview
+
+" Python config
+" autocmd FileType python map <buffer> <F7> :call flake8#Flake8()<CR>
 
 " Markdown config
 let g:vim_markdown_folding_disabled = 1
