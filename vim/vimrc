@@ -26,11 +26,20 @@ Plug 'scrooloose/nerdtree'
 " Syntax highlight https://github.com/sheerun/vim-polyglot
 Plug 'sheerun/vim-polyglot'
 
-" Autocompletion https://github.com/davidhalter/jedi-vim
+" Auto pairs https://github.com/jiangmiao/auto-pairs
+Plug 'jiangmiao/auto-pairs'
+
+" Use tab https://github.com/ervandew/supertab
+Plug 'ervandew/supertab'
+
+" Python autocompletion https://github.com/davidhalter/jedi-vim
 Plug 'davidhalter/jedi-vim'
 
-" Flake8 https://github.com/nvie/vim-flake8
+" Python lint Flake8 https://github.com/nvie/vim-flake8
 Plug 'nvie/vim-flake8'
+
+" Golang https://github.com/fatih/vim-go
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " Markdown https://github.com/plasticboy/vim-markdown
 Plug 'godlygeek/tabular'
@@ -71,6 +80,11 @@ set gcr=a:blinkon0
 " Always show current position
 set ruler
 
+" Fold
+set foldmethod=indent
+set foldnestmax=3
+set nofoldenable
+
 " Tab autocomplete and ignore
 set wildmode=list:longest,full
 set wildignore=*.pyc
@@ -86,6 +100,8 @@ filetype indent on
 
 set autoindent
 set smartindent
+set tabstop=4
+set shiftwidth=4
 set smarttab
 set expandtab
 
