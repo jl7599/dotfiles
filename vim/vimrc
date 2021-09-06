@@ -1,9 +1,12 @@
-" Use Vim settings, rather then Vi settings (much better!).
+" Use Vim settings, rather than Vi settings.
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
 "==========================================
 " Initial Plugin
+" Installing plugins run :PlugInstall
+" Updating plugins run :PlugUpdate
+" Removing pligins run :PlugClean
 "==========================================
 
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -23,6 +26,9 @@ Plug 'vim-airline/vim-airline'
 " NERDTREE https://github.com/preservim/nerdtree
 Plug 'scrooloose/nerdtree'
 
+" https://github.com/ctrlpvim/ctrlp.vim
+Plug 'ctrlpvim/ctrlp.vim'
+
 " Syntax highlight https://github.com/sheerun/vim-polyglot
 Plug 'sheerun/vim-polyglot'
 
@@ -32,18 +38,14 @@ Plug 'jiangmiao/auto-pairs'
 " Use tab https://github.com/ervandew/supertab
 Plug 'ervandew/supertab'
 
+" Asynchronous Lint Engine https://github.com/dense-analysis/ale
+Plug 'dense-analysis/ale'
+
 " Python autocompletion https://github.com/davidhalter/jedi-vim
 Plug 'davidhalter/jedi-vim'
 
-" Python lint Flake8 https://github.com/nvie/vim-flake8
-Plug 'nvie/vim-flake8'
-
-" Golang https://github.com/fatih/vim-go
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-
-" Markdown https://github.com/plasticboy/vim-markdown
-Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
+" Comment stuff out. https://github.com/tpope/vim-commentary
+Plug 'tpope/vim-commentary'
 
 call plug#end()
 
@@ -55,21 +57,22 @@ call plug#end()
 syntax on
 
 set number
-set history=500
-set autoread
-set showcmd
-set showmode
 set hidden
+set showcmd
+set autoread
+set noshowmode
+set history=500
+set laststatus=2
 
 " Search
-set incsearch
 set hlsearch
-set ignorecase
 set smartcase
+set incsearch
+set ignorecase
 
 " Security
-set modelines=0
 set nomodeline
+set modelines=0
 
 " Allow backspace in insert mode
 set backspace=indent,eol,start
@@ -81,9 +84,9 @@ set gcr=a:blinkon0
 set ruler
 
 " Fold
-set foldmethod=indent
-set foldnestmax=3
 set nofoldenable
+set foldnestmax=3
+set foldmethod=indent
 
 " Tab autocomplete and ignore
 set wildmode=list:longest,full
@@ -92,8 +95,6 @@ set wildignore=*.jpg,*.png,*.gif
 
 " Never recognizes leading zero number as octal number
 set nrformats-=octal
-
-let mapleader=","
 
 filetype plugin on
 filetype indent on
@@ -105,6 +106,14 @@ set shiftwidth=4
 set smarttab
 set expandtab
 
+let mapleader=","
+
+" Move between windows
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
 " Colorscheme config, see :help gruvbox-material.txt
 if has('termguicolors')
   set termguicolors
@@ -114,19 +123,20 @@ let g:gruvbox_material_background = 'hard'
 "let g:gruvbox_material_background = 'soft'
 colorscheme gruvbox-material
 
-" NERDTREE config
-map <F3> :NERDTreeMirror<CR>
-map <F3> :NERDTreeToggle<CR>
+" NERDTree config
+nnoremap <F3> :NERDTreeToggle<CR>
+" Exit Vim if NERDTree is the only window remaining in the only tab.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
 " Airline config
 let g:airline_theme = 'gruvbox_material'
-let g:airline_section_z = airline#section#create(['%l/%L :%v'])
+let g:airline_section_z = airline#section#create(['%v %l/%L'])
 let g:airline_section_y = airline#section#create_right([])
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_close_button = 0
-let g:airline#extensions#tabline#show_tab_nr = 0
-let g:airline#extensions#tabline#tab_nr_type = 2
+let g:airline#extensions#tabline#tab_nr_type = 1
 let g:airline#extensions#tabline#buffer_idx_mode = 1
+let g:airline#extensions#ale#enabled = 1
 nmap <leader>1 <Plug>AirlineSelectTab1
 nmap <leader>2 <Plug>AirlineSelectTab2
 nmap <leader>3 <Plug>AirlineSelectTab3
@@ -141,17 +151,21 @@ nmap <leader>- <Plug>AirlineSelectPrevTab
 nmap <leader>+ <Plug>AirlineSelectNextTab
 set t_Co=256
 
-" Autocompletion config
-let g:jedi#use_tabs_not_buffers = 1
+" Jedi config
+" let g:jedi#use_tabs_not_buffers = 1
 autocmd FileType python setlocal completeopt-=preview
 
-" Python config
-autocmd FileType python map <buffer> <F8> :call flake8#Flake8()<CR>
-
-" Go config
-let g:go_fmt_command = "goimports"
-
-" Markdown config
-let g:vim_markdown_folding_disabled = 1
-let g:vim_markdown_toc_autofit = 1
-
+" ALE config
+let g:ale_linters = {
+\   'python': ['flake8', 'mypy'],
+\}
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '%severity%: %s [%linter%]'
+let g:ale_fix_on_save = 1
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'python': ['black', 'isort'],
+\}
+" let g:ale_open_list = 1
+" let g:ale_keep_list_window_open = 1
