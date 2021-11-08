@@ -97,7 +97,16 @@ set foldmethod=indent
 " Tab autocomplete and ignore
 set wildmode=list:longest,full
 set wildignore=*.pyc
-set wildignore=*.jpg,*.png,*.gif
+set wildignore+=.git,.hg,.svn
+set wildignore+=*.aux,*.out,*.toc
+set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest,*.rbc,*.class
+set wildignore+=*.ai,*.bmp,*.gif,*.ico,*.jpg,*.jpeg,*.png,*.psd,*.webp
+set wildignore+=*.avi,*.divx,*.mp4,*.webm,*.mov,*.m2ts,*.mkv,*.vob,*.mpg,*.mpeg
+set wildignore+=*.mp3,*.oga,*.ogg,*.wav,*.flac
+set wildignore+=*.eot,*.otf,*.ttf,*.woff
+set wildignore+=*.doc,*.pdf,*.cbr,*.cbz
+set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz,*.kgb
+set wildignore+=*.swp,.lock,.DS_Store,._*
 
 " Never recognizes leading zero number as octal number
 set nrformats-=octal
@@ -133,6 +142,9 @@ colorscheme gruvbox-material
 nnoremap <F3> :NERDTreeToggle<CR>
 " Exit Vim if NERDTree is the only window remaining in the only tab.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+let NERDTreeShowHidden=1
+let g:NERDTreeRespectWildIgnore = 1
+let NERDTreeIgnore = ['\.pyc$', '__pycache__', '\.git', '.mypy_cache', '.pytest_cache']
 
 " Airline config
 let g:airline_theme = 'gruvbox_material'
