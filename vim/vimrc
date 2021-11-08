@@ -47,6 +47,12 @@ Plug 'davidhalter/jedi-vim'
 " Comment stuff out. https://github.com/tpope/vim-commentary
 Plug 'tpope/vim-commentary'
 
+" https://github.com/airblade/vim-gitgutter
+Plug 'airblade/vim-gitgutter'
+
+" https://github.com/xuyuanp/nerdtree-git-plugin
+Plug 'xuyuanp/nerdtree-git-plugin'
+
 call plug#end()
 
 
@@ -120,7 +126,7 @@ if has('termguicolors')
 endif
 set background=dark
 let g:gruvbox_material_background = 'hard'
-"let g:gruvbox_material_background = 'soft'
+" let g:gruvbox_material_background = 'soft'
 colorscheme gruvbox-material
 
 " NERDTree config
