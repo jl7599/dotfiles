@@ -47,6 +47,9 @@ Plug 'davidhalter/jedi-vim'
 " Comment stuff out. https://github.com/tpope/vim-commentary
 Plug 'tpope/vim-commentary'
 
+" https://github.com/tpope/vim-fugitive
+Plug 'tpope/vim-fugitive'
+
 " https://github.com/airblade/vim-gitgutter
 Plug 'airblade/vim-gitgutter'
 
@@ -120,6 +123,8 @@ set tabstop=4
 set shiftwidth=4
 set smarttab
 set expandtab
+set splitright
+set mouse=nicr
 
 let mapleader=","
 
