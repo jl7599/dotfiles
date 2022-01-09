@@ -26,8 +26,9 @@ Plug 'vim-airline/vim-airline'
 " NERDTREE https://github.com/preservim/nerdtree
 Plug 'scrooloose/nerdtree'
 
-" https://github.com/ctrlpvim/ctrlp.vim
-Plug 'ctrlpvim/ctrlp.vim'
+" https://github.com/junegunn/fzf.vim
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 " Syntax highlight https://github.com/sheerun/vim-polyglot
 Plug 'sheerun/vim-polyglot'
@@ -173,6 +174,15 @@ nmap <leader>0 <Plug>AirlineSelectTab0
 nmap <leader>- <Plug>AirlineSelectPrevTab
 nmap <leader>+ <Plug>AirlineSelectNextTab
 set t_Co=256
+
+" FZF config
+nnoremap <silent> <expr> <Leader><Leader> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":Files\<cr>"
+nnoremap <silent> <Leader>C        :Colors<CR>
+nnoremap <silent> <Leader><Enter>  :Buffers<CR>
+nnoremap <silent> <Leader>L        :Lines<CR>
+nnoremap <silent> <Leader>ag       :Ag <C-R><C-W><CR>
+nnoremap <silent> <Leader>AG       :Ag <C-R><C-A><CR>
+xnoremap <silent> <Leader>ag       y:Ag <C-R>"<CR>
 
 " Jedi config
 " let g:jedi#use_tabs_not_buffers = 1
