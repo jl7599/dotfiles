@@ -43,7 +43,10 @@ Plug 'ervandew/supertab'
 Plug 'dense-analysis/ale'
 
 " Python autocompletion https://github.com/davidhalter/jedi-vim
-Plug 'davidhalter/jedi-vim'
+" Plug 'davidhalter/jedi-vim'
+
+" https://github.com/neoclide/coc.nvim
+Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': { -> coc#util#install() }}
 
 " Comment stuff out. https://github.com/tpope/vim-commentary
 Plug 'tpope/vim-commentary'
@@ -202,3 +205,27 @@ let g:ale_fixers = {
 \}
 " let g:ale_open_list = 1
 " let g:ale_keep_list_window_open = 1
+
+" Coc config
+function! s:show_documentation()
+  if (index(['vim', 'help'], &filetype) >= 0)
+    execute 'h' expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+let g:coc_global_extensions = ['coc-git', 'coc-pyright', 'coc-json', 'coc-go',
+  \ 'coc-prettier', 'coc-eslint', 'coc-java']
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
+let g:go_doc_keywordprg_enabled = 0
+
+augroup coc-config
+  autocmd!
+  autocmd VimEnter * nmap <silent> <leader>gd <Plug>(coc-definition)
+  autocmd VimEnter * nmap <silent> <leader>gi <Plug>(coc-implementation)
+  autocmd VimEnter * nmap <silent> <leader>su <Plug>(coc-references)
+augroup END

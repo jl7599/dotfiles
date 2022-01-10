@@ -7,14 +7,14 @@
 - A Unix-like operating system: macOS, Liunx, BSD.
 - `VIM` should be installed(recommended v8.1 or higher)
 - Install other dependencies:
-    - macOS run 
-    
+    - macOS run
+
         ```
         $ brew install fzf the_silver_searcher
         ```
 
     - Ubuntu run `sudo apt-get install -y fzf silversearcher-ag`
-        
+
         ```
         $ sudo apt-get install -y fzf silversearcher-ag
         ```
