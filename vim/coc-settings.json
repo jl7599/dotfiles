@@ -1,0 +1,20 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": ["json", "markdown", "python"],
+  // python config
+  "python.formatting.provider": "black",
+  "python.linting.lintOnSave": true,
+  "python.linting.flake8Enabled": true,
+  "python.linting.mypyEnabled": true,
+  "pyright.organizeimports.provider": "isort",
+  // languageserver
+  "languageserver": {
+    "golang": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod", ".vim/", ".git/"],
+      "filetypes": ["go"],
+      "initializationOptions": {
+        "usePlaceholders": true
+      }
+    }
+  }
+}
