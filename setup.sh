@@ -26,8 +26,8 @@ mkdir -p ${CACHE_DIR}
 # Golang setup
 #./golang/setup.sh
 
-# VIM setup
-./vim/setup.sh
+# Nvim setup
+./nvim/setup.sh
 
 # Tmux setup
 ./tmux/setup.sh
