@@ -5,7 +5,7 @@
 set -e
 
 if [ -f "${CACHE_DIR}/.zsh" ]; then
-    echo "Git has been configured successfully."
+    echo "Zsh has been configured successfully."
     exit 0
 fi
 
