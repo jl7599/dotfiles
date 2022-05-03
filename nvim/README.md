@@ -1,6 +1,6 @@
-# My NeoVim config
+# My NeoVim Config
 
-- [My NeoVim config](#my-neovim-config)
+- [My NeoVim Config](#my-neovim-config)
   - [Plugins](#plugins)
   - [Getting Started](#getting-started)
     - [Prerequisites](#prerequisites)
@@ -14,13 +14,18 @@
 - [gruvbox-material](https://github.com/sainnhe/gruvbox-material) Basic color scheme
 - [vim-polyglot](https://github.com/sheerun/vim-polyglot) A solid language pack
 - [vim-commentary](https://github.com/tpope/vim-commentary) Comment stuff out
+- [nerdtree](https://github.com/preservim/nerdtree) A tree explorer
+- [vim-fugitive](https://github.com/tpope/vim-fugitive) A Git wrapper
+- [gv.vim](https://github.com/junegunn/gv.vim) A git commit browser
+- [git-messenger.vim](https://github.com/rhysd/git-messenger.vim) Git message/blame
+- [auto-pairs](https://github.com/jiangmiao/auto-pairs) Insert or delete brackets, parens, quotes in pair
 
 ## Getting Started
 
 ### Prerequisites
 
-- Ubuntu, Debian and Windows 10 WSL
-- git should be installed
+- Only support Debian linux system(Ubuntu or Windows 10 WSL)
+- `git` should be installed
 
 ### Basic Installation
 
@@ -45,12 +50,14 @@ cd config && bash setup.sh nvim
 | `gcc`                                       | comment out a line                 | n    |
 | `gc`                                        | comment out the selection          | v    |
 | `Y`                                         | copy selection to system clipboard | v    |
+| `F3`                                        | toggle tree explorer               | n    |
+| `Space` `gs`                                | git status                         | n    |
+| `Space` `gd`                                | git diff                           | n    |
+| `Space` `gm`                                | git message                        | n    |
 
 ## TODO LIST
 
-- [ ] 文件树
-- [ ] 顶部和底部状态栏
+- [ ] 顶部状态栏
 - [ ] 模糊搜索
-- [ ] Git
 - [ ] Python
 - [ ] Golang

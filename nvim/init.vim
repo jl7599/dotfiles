@@ -13,6 +13,7 @@ set noshowmode
 set ignorecase
 set smartcase
 set cursorline
+set laststatus=2
 set expandtab
 set tabstop=4
 set shiftwidth=4
@@ -71,8 +72,24 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'sainnhe/gruvbox-material'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
+Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'junegunn/gv.vim'
+Plug 'rhysd/git-messenger.vim'
+Plug 'jiangmiao/auto-pairs'
 
 call plug#end()
+
+" Bottom status line
+function! s:statusline_expr()
+  let sep = ' %= '
+  let pos = ' %-12(%l : %c%V%) '
+  let pct = ' %P'
+
+  return '%F %<'.sep.pos.'%*'.pct
+endfunction
+let &statusline = s:statusline_expr()
 
 " Colorscheme config, see :help gruvbox-material.txt
 if has('termguicolors')
@@ -82,3 +99,20 @@ set background=dark
 let g:gruvbox_material_background = 'hard'
 " let g:gruvbox_material_background = 'soft'
 colorscheme gruvbox-material
+
+" nerdtree
+nnoremap <F3> :NERDTreeToggle<CR>
+" Start NERDTree when Vim is started without file arguments.
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
+" Open the existing NERDTree on each new tab.
+autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
+" Exit Vim if NERDTree is the only window remaining in the only tab.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
+" vim-fugitive
+nnoremap <Leader>gd :Gdiff<CR>
+nnoremap <Leader>gs :Git status<CR>
+
+" git-messenger.vim
+let g:git_messenger_floating_win_opts = { 'border': 'single' }
