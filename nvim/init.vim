@@ -52,6 +52,8 @@ noremap <C-up> <C-w>+
 noremap <C-down> <C-w>-
 " Opening a terminal window
 noremap <leader>` :set splitbelow<CR>:split<CR>:res -10<CR>:term<CR>
+" Quit terminal window
+tnoremap <leader>` <C-\><C-n>
 
 " Create a new tabedit
 noremap te :tabedit 
@@ -78,6 +80,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/gv.vim'
 Plug 'rhysd/git-messenger.vim'
 Plug 'jiangmiao/auto-pairs'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
@@ -116,3 +120,31 @@ nnoremap <Leader>gs :Git status<CR>
 
 " git-messenger.vim
 let g:git_messenger_floating_win_opts = { 'border': 'single' }
+
+" fzf
+" fzf.vim
+nnoremap <silent> <expr> <Leader><Leader> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":Files\<cr>"
+nnoremap <silent> <Leader>b  :Buffers<CR>
+nnoremap <silent> <Leader>L        :Lines<CR>
+nnoremap <silent> <Leader>ag       :Ag <C-R><C-W><CR>
+nnoremap <silent> <Leader>AG       :Ag <C-R><C-A><CR>
+xnoremap <silent> <Leader>ag       y:Ag <C-R>"<CR>
+function! s:list_buffers()
+  redir => list
+  silent ls
+  redir END
+  return split(list, "\n")
+endfunction
+
+function! s:delete_buffers(lines)
+  execute 'bwipeout' join(map(a:lines, {_, line -> split(line)[0]}))
+endfunction
+
+command! BD call fzf#run(fzf#wrap({
+  \ 'source': s:list_buffers(),
+  \ 'sink*': { lines -> s:delete_buffers(lines) },
+  \ 'options': '--multi --reverse --bind ctrl-a:select-all+accept'
+\ }))
+
+noremap <C-d> :BD<CR>
+let g:fzf_layout = { 'window': { 'width': 0.95, 'height': 0.95 } }

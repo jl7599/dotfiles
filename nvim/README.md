@@ -19,6 +19,8 @@
 - [gv.vim](https://github.com/junegunn/gv.vim) A git commit browser
 - [git-messenger.vim](https://github.com/rhysd/git-messenger.vim) Git message/blame
 - [auto-pairs](https://github.com/jiangmiao/auto-pairs) Insert or delete brackets, parens, quotes in pair
+- [junegunn/fzf](https://github.com/junegunn/fzf) A command-line fuzzy finder
+- [junegunn/fzf.vim](https://github.com/junegunn/fzf.vim) Things you can do with fzf and Vim
 
 ## Getting Started
 
@@ -38,26 +40,30 @@ cd config && bash setup.sh nvim
 
 ### Keyboard Shortcuts
 
-| Shorcut                                     | Action                             | Mode |
-| ------------------------------------------- | ---------------------------------- | ---- |
-| `ss`                                        | horizontal split                   | n    |
-| `sv`                                        | vertical split                     | n    |
-| `Ctrl` `k` `j` `h` `l`                      | move window                        | n    |
-| `Ctrl` `↑` `↓` `←` `→`                      | resize window                      | n    |
-| `Space` `                                   | open terminal                      | n    |
-| `Space` `1` `2` `3` `4` `5` `6` `7` `8` `9` | open specified tab                 | n    |
-| `te`                                        | create new tab                     | n    |
-| `gcc`                                       | comment out a line                 | n    |
-| `gc`                                        | comment out the selection          | v    |
-| `Y`                                         | copy selection to system clipboard | v    |
-| `F3`                                        | toggle tree explorer               | n    |
-| `Space` `gs`                                | git status                         | n    |
-| `Space` `gd`                                | git diff                           | n    |
-| `Space` `gm`                                | git message                        | n    |
+| Shorcut                                     | Action                                | Mode |
+| ------------------------------------------- | ------------------------------------- | ---- |
+| `ss`                                        | horizontal split                      | n    |
+| `sv`                                        | vertical split                        | n    |
+| `Ctrl` `k` `j` `h` `l`                      | move window                           | n    |
+| `Ctrl` `↑` `↓` `←` `→`                      | resize window                         | n    |
+| `Space` `                                   | open terminal                         | n    |
+| `Space` `1` `2` `3` `4` `5` `6` `7` `8` `9` | open specified tab                    | n    |
+| `te`                                        | create new tab                        | n    |
+| `gcc`                                       | comment out a line                    | n    |
+| `gc`                                        | comment out the selection             | v    |
+| `Y`                                         | copy selection to system clipboard    | v    |
+| `F3`                                        | toggle tree explorer                  | n    |
+| `Space` `gs`                                | git status                            | n    |
+| `Space` `gd`                                | git diff                              | n    |
+| `Space` `gm`                                | git message                           | n    |
+| `Space` `Space`                             | fuzzy find files at root dir          | n    |
+| `Space` `b`                                 | list buffers                          | n    |
+| `Ctrl` `d`                                  | delete list buffers                   | n    |
+| `Space` `L`                                 | fuzzy find line in all buffers        | n    |
+| `Space` `ag`                                | fuzzy find string in all root content | n    |
 
 ## TODO LIST
 
 - [ ] 顶部状态栏
-- [ ] 模糊搜索
 - [ ] Python
 - [ ] Golang

@@ -17,5 +17,8 @@ vim_path=${which vim}
 sudo rm -f ${vim_path}
 sudo ln -s $(which nvim) ${vim_path}
 
+# Fzf Dependencies
+sudo apt-get install -y fzf bat silversearcher-ag ripgrep perl
+
 touch ${CACHE_DIR}/.vim
 echo "Setup nvim done."
