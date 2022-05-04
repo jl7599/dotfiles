@@ -9,7 +9,8 @@ fi
 
 echo "Setup vim ..."
 # Install neovim
-sudo apt-get install -y neovim
+wget -O /tmp/nvim.deb https://github.com/neovim/neovim/releases/download/v0.7.0/nvim-linux64.deb
+sudo apt install /tmp/nvim.deb
 sudo apt-get install -y python3-neovim
 sudo apt-get install -y npm
 sudo npm install -g neovim
@@ -22,22 +23,8 @@ mkdir -p ${HOME}/.config/nvim
 sudo apt-get install -y fzf bat silversearcher-ag ripgrep perl
 
 # Coc dependencies
-sudo npm install -g yarn
+sudo npm install -g yarn bash-language-server
 pip install -U jedi-language-server neovim pynvim
-cat >> ~/.zshrc << EOF
-# Neovim and pyenv set !python of virtualenv
-# See https://vi.stackexchange.com/a/34996
-#function nvimvenv {
-#  if [[ -e "\$VIRTUAL_ENV" && -f "\$VIRTUAL_ENV/bin/activate" ]]; then
-#    source "$VIRTUAL_ENV/bin/activate"
-#    command nvim $@
-#    deactivate
-#  else
-#    command nvim $@
-#  fi
-#}
-#alias vim=nvimvenv
-EOF
 
 touch ${CACHE_DIR}/.vim
 echo "Setup nvim done."

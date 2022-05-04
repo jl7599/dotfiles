@@ -6,13 +6,20 @@
   "diagnostic.displayByAle": false,
   "diagnostic.refreshOnInsertMode": false,
   "diagnostic.checkCurrentLine": true,
-  "coc.preferences.formatOnSaveFiletypes": ["jsonc", "json"],
+  "coc.preferences.formatOnSaveFiletypes": [
+    "jsonc",
+    "json"
+  ],
   "yaml.format.enable": true,
   "languageserver": {
     "bash": {
       "command": "bash-language-server",
-      "args": ["start"],
-      "filetypes": ["sh"],
+      "args": [
+        "start"
+      ],
+      "filetypes": [
+        "sh"
+      ],
       "ignoredRootPaths": []
     }
   },
@@ -22,8 +29,7 @@
   "jedi.trace.server": "off",
   "jedi.jediSettings.autoImportModules": [],
   "jedi.jediSettings.caseInsensitiveCompletion": true,
-  "jedi.jediSettings.debug": false,
-  "jedi.executable.command": "jedi-language-server",
+  "jedi.jediSettings.debug": true,
   "jedi.executable.args": [],
   "jedi.codeAction.nameExtractFunction": "jls_extract_def",
   "jedi.codeAction.nameExtractVariable": "jls_extract_var",
