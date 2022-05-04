@@ -2,8 +2,6 @@
 #
 # Setup git config on Ubuntu system
 
-set -e
-
 if [ -f "${CACHE_DIR}/.git" ]; then
     echo "Git has been configured successfully."
     exit 0

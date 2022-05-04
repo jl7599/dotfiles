@@ -2,8 +2,6 @@
 #
 # Setup Python config on Ubuntu system
 
-set -e
-
 if [ -f "${CACHE_DIR}/.python" ]; then
     echo "Python has been configured successfully."
     exit 0

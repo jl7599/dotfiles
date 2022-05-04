@@ -2,8 +2,6 @@
 #
 # Setup zsh config on Ubuntu system
 
-set -e
-
 if [ -f "${CACHE_DIR}/.zsh" ]; then
     echo "Zsh has been configured successfully."
     exit 0
