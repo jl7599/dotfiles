@@ -21,6 +21,8 @@
 - [auto-pairs](https://github.com/jiangmiao/auto-pairs) Insert or delete brackets, parens, quotes in pair
 - [junegunn/fzf](https://github.com/junegunn/fzf) A command-line fuzzy finder
 - [junegunn/fzf.vim](https://github.com/junegunn/fzf.vim) Things you can do with fzf and Vim
+- [coc.nvim](https://github.com/neoclide/coc.nvim) Load extensions like VSCode and host language servers
+- [coc-jedi](https://github.com/pappasam/coc-jedi) coc.nvim wrapper for [jedi-language-server](https://github.com/pappasam/jedi-language-server)
 
 ## Getting Started
 
@@ -61,9 +63,18 @@ cd config && bash setup.sh nvim
 | `Ctrl` `d`                                  | delete list buffers                   | n    |
 | `Space` `L`                                 | fuzzy find line in all buffers        | n    |
 | `Space` `ag`                                | fuzzy find string in all root content | n    |
+| `gd`                                        | go to definition                      | n    |
+| `gy`                                        | go to type definition                 | n    |
+| `gi`                                        | go to implementation                  | n    |
+| `gr`                                        | list references                       | n    |
+| `K`                                         | show document                         | n    |
+| `Space` `rn`                                | rename symbol                         | n    |
+| `da`                                        | show all coc diagnostics              | n    |
+| `:Format`                                   | format current buffer                 | c    |
+| `:Fold`                                     | fold current buffer                   | c    |
 
 ## TODO LIST
 
-- [ ] 顶部状态栏
-- [ ] Python
+- [ ] tab/buffer status line
+- [ ] Python black isort flake8
 - [ ] Golang
