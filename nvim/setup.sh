@@ -24,7 +24,22 @@ sudo apt-get install -y fzf bat silversearcher-ag ripgrep perl
 
 # Coc dependencies
 sudo npm install -g yarn
-pip install -U jedi-language-server
+pip install -U jedi-language-server neovim pynvim
+cat >> ~/.zshrc << EOF
+# Neovim and pyenv set !python of virtualenv
+# See https://vi.stackexchange.com/a/34996
+function nvimvenv {
+  if [[ -e "\$VIRTUAL_ENV" && -f "\$VIRTUAL_ENV/bin/activate" ]]; then
+    source "$VIRTUAL_ENV/bin/activate"
+    command nvim $@
+    deactivate
+  else
+    command nvim $@
+  fi
+}
+
+alias vim=nvimvenv
+EOF
 
 touch ${CACHE_DIR}/.vim
 echo "Setup nvim done."

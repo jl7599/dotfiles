@@ -27,6 +27,7 @@ if [ -z "$(grep pyenv ~/.profile)" ]; then
 fi
 if [ -z "#(grep pyenv ~/.zshrc)" ]; then
     echo 'eval "$(pyenv init -)"' >> ~/.zshrc
+    echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.zshrc
 fi
 
 # Install Python build dependencies
@@ -35,9 +36,9 @@ sudo apt-get install -y -q make build-essential libssl-dev zlib1g-dev \
   libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
 
 # Install Python3.10
-echo "  Install Python3.10.1"
-~/.pyenv/bin/pyenv install -s 3.10.1
-~/.pyenv/bin/pyenv global 3.10.1
+echo "  Install Python3.10.0"
+~/.pyenv/bin/pyenv install -s 3.10.0
+~/.pyenv/bin/pyenv global 3.10.0
 
 # Install IPython
 echo "  Install ipython"

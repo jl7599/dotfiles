@@ -33,6 +33,10 @@ set hidden
 set updatetime=100
 set shortmess+=c
 
+let g:loaded_ruby_provider = 0
+let g:loaded_perl_provider = 0
+let g:python3_host_prog=$HOME.'/.pyenv/versions/3.10.0/bin/python'
+
 let mapleader=" "
 
 " Copy to system clipboard
