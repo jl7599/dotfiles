@@ -57,6 +57,7 @@ cd config && bash setup.sh nvim
 | `F3`                                        | toggle tree explorer                  | n    |
 | `Space` `gs`                                | git status                            | n    |
 | `Space` `gd`                                | git diff                              | n    |
+| `Space` `gb`                                | git blame                             | n    |
 | `Space` `gm`                                | git message                           | n    |
 | `Space` `Space`                             | fuzzy find files at root dir          | n    |
 | `Space` `b`                                 | list buffers                          | n    |

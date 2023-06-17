@@ -124,6 +124,7 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTr
 " vim-fugitive
 nnoremap <Leader>gd :Gdiff<CR>
 nnoremap <Leader>gs :Git status<CR>
+nnoremap <Leader>gb :Git blame<CR>
 
 " git-messenger.vim
 let g:git_messenger_floating_win_opts = { 'border': 'single' }
@@ -228,3 +229,6 @@ command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.org
 
 " Show all diagnostics.
 nnoremap <silent><nowait> da :<C-u>CocList diagnostics<cr>
+
+" vim-snippets
+let g:snips_author='Jia Lei'
