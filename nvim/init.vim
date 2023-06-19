@@ -92,6 +92,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build', 'branch': 'main' }
 Plug 'honza/vim-snippets'
+Plug 'christoomey/vim-tmux-navigator'
 
 call plug#end()
 
