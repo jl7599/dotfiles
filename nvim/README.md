@@ -48,6 +48,7 @@ cd config && bash setup.sh nvim
 | `sv`                                        | vertical split                        | n    |
 | `Ctrl` `k` `j` `h` `l`                      | move window                           | n    |
 | `Ctrl` `↑` `↓` `←` `→`                      | resize window                         | n    |
+| `Space` `w`                                 | close terminal                        | n    |
 | `Space` `                                   | open terminal                         | n    |
 | `Space` `1` `2` `3` `4` `5` `6` `7` `8` `9` | open specified tab                    | n    |
 | `te`                                        | create new tab                        | n    |
@@ -64,6 +65,8 @@ cd config && bash setup.sh nvim
 | `Ctrl` `d`                                  | delete list buffers                   | n    |
 | `Space` `L`                                 | fuzzy find line in all buffers        | n    |
 | `Space` `ag`                                | fuzzy find string in all root content | n    |
+| `Space` `rp`                                | run current Python script             | n    |
+| `Space` `rs`                                | run current shell script              | n    |
 | `gd`                                        | go to definition                      | n    |
 | `gy`                                        | go to type definition                 | n    |
 | `gi`                                        | go to implementation                  | n    |
@@ -74,8 +77,3 @@ cd config && bash setup.sh nvim
 | `:Format`                                   | format current buffer                 | c    |
 | `:Fold`                                     | fold current buffer                   | c    |
 
-## TODO LIST
-
-- [ ] tab/buffer status line
-- [ ] Python black isort flake8
-- [ ] Golang

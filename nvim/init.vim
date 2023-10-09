@@ -57,6 +57,8 @@ noremap <C-left> <C-w><
 noremap <C-right> <C-w>>
 noremap <C-up> <C-w>+
 noremap <C-down> <C-w>-
+" Close window
+nnoremap <leader>w :bd!<CR>
 " Opening a terminal window
 noremap <leader>` :set splitbelow<CR>:split<CR>:res -10<CR>:term<CR>
 " Quit terminal window
@@ -75,6 +77,11 @@ noremap <leader>7 7gt
 noremap <leader>8 8gt
 noremap <leader>9 9gt
 noremap <leader>0 :tablast<cr>
+
+" Run this Python file
+nnoremap <leader>rp :sp <CR> :term python % <CR>
+" Run this shell file
+nnoremap <leader>rs :sp <CR> :term bash % <CR>
 
 call plug#begin('~/.config/nvim/plugged')
 
