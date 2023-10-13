@@ -48,8 +48,8 @@ cd config && bash setup.sh nvim
 | `sv`                                        | vertical split                        | n    |
 | `Ctrl` `k` `j` `h` `l`                      | move window                           | n    |
 | `Ctrl` `↑` `↓` `←` `→`                      | resize window                         | n    |
-| `Space` `w`                                 | close terminal                        | n    |
-| `Space` `                                   | open terminal                         | n    |
+| `Space` `t`                                 | open or create a terminal             | n    |
+| `Ctrl` `t`                                  | toggle terminal                       | n    |
 | `Space` `1` `2` `3` `4` `5` `6` `7` `8` `9` | open specified tab                    | n    |
 | `te`                                        | create new tab                        | n    |
 | `gcc`                                       | comment out a line                    | n    |
@@ -76,4 +76,3 @@ cd config && bash setup.sh nvim
 | `da`                                        | show all coc diagnostics              | n    |
 | `:Format`                                   | format current buffer                 | c    |
 | `:Fold`                                     | fold current buffer                   | c    |
-

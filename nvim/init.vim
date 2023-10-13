@@ -59,10 +59,6 @@ noremap <C-up> <C-w>+
 noremap <C-down> <C-w>-
 " Close window
 nnoremap <leader>w :bd!<CR>
-" Opening a terminal window
-noremap <leader>` :set splitbelow<CR>:split<CR>:res -10<CR>:term<CR>
-" Quit terminal window
-tnoremap <leader>` <C-\><C-n>
 
 " Create a new tabedit
 noremap te :tabedit 
@@ -100,6 +96,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build', 'branch': 'main' }
 Plug 'honza/vim-snippets'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'voldikss/vim-floaterm'
 
 call plug#end()
 
@@ -169,6 +166,11 @@ command! BD call fzf#run(fzf#wrap({
 
 noremap <C-d> :BD<CR>
 let g:fzf_layout = { 'window': { 'width': 0.95, 'height': 0.95 } }
+
+" ===== floaterm =====
+nnoremap <silent> <leader>t  :FloatermNew<CR>
+nnoremap <silent> <leader>t  :FloatermToggle<CR>
+tnoremap <silent> <C-t>      <C-\><C-n>:FloatermToggle<CR>
 
 " ===== coc.nvim =====
 let g:coc_global_extensions = [
@@ -241,7 +243,7 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.organizeImport')
 
 " Show all diagnostics.
-nnoremap <silent><nowait> da :<C-u>CocList diagnostics<cr>
+" nnoremap <silent><nowait> da :<C-u>CocList diagnostics<cr>
 
 " vim-snippets
 let g:snips_author='Jia Lei'
