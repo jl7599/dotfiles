@@ -32,6 +32,9 @@ set foldenable
 set hidden
 set updatetime=100
 set shortmess+=c
+set nobackup
+set nowritebackup
+set signcolumn=yes
 
 let g:loaded_ruby_provider = 0
 let g:loaded_perl_provider = 0
@@ -188,22 +191,21 @@ let g:coc_global_extensions = [
       \ 'coc-jedi',
       \ 'coc-snippets']
 
-" Use tab for trigger completion with characters ahead and navigate.
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
       \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
-function! s:check_back_space() abort
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-
-" Make <CR> auto-select the first completion item
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
@@ -254,5 +256,5 @@ let g:snips_author='Jia Lei'
 
 let g:tabby_node_binary = $HOME.'/.nvm/versions/node/v20.9.0/bin/node'
 let g:tabby_trigger_mode = 'manual'
-let g:tabby_keybinding_accept = '<Tab>'
-let g:tabby_keybinding_trigger_or_dismiss = '<C-\>'
+" let g:tabby_keybinding_accept = '<Tab>'
+" let g:tabby_keybinding_trigger_or_dismiss = '<C-\>'
