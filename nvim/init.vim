@@ -97,6 +97,7 @@ Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build'
 Plug 'honza/vim-snippets'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'voldikss/vim-floaterm'
+Plug 'TabbyML/vim-tabby'
 
 call plug#end()
 
@@ -171,6 +172,9 @@ let g:fzf_layout = { 'window': { 'width': 0.95, 'height': 0.95 } }
 nnoremap <silent> <leader>t  :FloatermNew<CR>
 nnoremap <silent> <leader>t  :FloatermToggle<CR>
 tnoremap <silent> <C-t>      <C-\><C-n>:FloatermToggle<CR>
+let g:floaterm_position = 'right'
+let g:floaterm_width = 0.70
+let g:floaterm_height = 0.95
 
 " ===== coc.nvim =====
 let g:coc_global_extensions = [
@@ -247,3 +251,8 @@ command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.org
 
 " vim-snippets
 let g:snips_author='Jia Lei'
+
+let g:tabby_node_binary = $HOME.'/.nvm/versions/node/v20.9.0/bin/node'
+let g:tabby_trigger_mode = 'manual'
+let g:tabby_keybinding_accept = '<Tab>'
+let g:tabby_keybinding_trigger_or_dismiss = '<C-\>'
