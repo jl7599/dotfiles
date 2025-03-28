@@ -37,6 +37,7 @@ set nowritebackup
 set signcolumn=yes
 
 let g:loaded_ruby_provider = 0
+let g:loaded_node_provider = 0
 let g:loaded_perl_provider = 0
 let g:python3_host_prog=$HOME.'/.pyenv/versions/3.10.0/bin/python'
 
@@ -78,7 +79,7 @@ noremap <leader>9 9gt
 noremap <leader>0 :tablast<cr>
 
 " Run this Python file
-nnoremap <leader>rp :sp <CR> :term python % <CR>
+nnoremap <F5> :sp <CR> :term python % <CR>
 " Run this shell file
 nnoremap <leader>rs :sp <CR> :term bash % <CR>
 
@@ -97,6 +98,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build', 'branch': 'main' }
+Plug 'yaegassy/coc-ruff', {'do': 'yarn install --frozen-lockfile'}
 Plug 'honza/vim-snippets'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'voldikss/vim-floaterm'
@@ -122,6 +124,7 @@ set background=dark
 let g:gruvbox_material_background = 'hard'
 " let g:gruvbox_material_background = 'soft'
 colorscheme gruvbox-material
+highlight Normal guibg=NONE ctermbg=None
 
 " nerdtree
 nnoremap <F3> :NERDTreeToggle<CR>
@@ -134,6 +137,8 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTr
 " If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
 autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
     \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+let g:NERDTreeFileLines = 1
+let NERDTreeIgnore = ['\.pyc$', '^__pycache__$']
 
 " vim-fugitive
 nnoremap <Leader>gd :Gdiff<CR>
@@ -145,6 +150,7 @@ let g:git_messenger_floating_win_opts = { 'border': 'single' }
 
 " fzf
 " fzf.vim
+let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 nnoremap <silent> <expr> <Leader><Leader> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":Files\<cr>"
 nnoremap <silent> <Leader>b  :Buffers<CR>
 nnoremap <silent> <Leader>L        :Lines<CR>
@@ -191,6 +197,7 @@ let g:coc_global_extensions = [
       \ 'coc-jedi',
       \ 'coc-snippets']
 
+      " \ 'coc-ruff',
 inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#pum#next(1) :
       \ CheckBackspace() ? "\<Tab>" :
@@ -218,6 +225,9 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
+" Apply the most preferred quickfix action to fix diagnostic on the current line
+nmap <leader>f  <Plug>(coc-fix-current)
+
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
@@ -241,6 +251,9 @@ nmap <leader>aw  <Plug>(coc-codeaction-selected)w
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocActionAsync('format')
+
+" Add `:Fix` command to fix current buffer.
+" command! -nargs=0 Fix :call CocActionAsync('fixAll')
 
 " Add `:Fold` command to fold current buffer.
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
