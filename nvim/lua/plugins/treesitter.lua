@@ -7,6 +7,17 @@ return {
     build = ":TSUpdate",
     config = function()
       vim.opt.smartindent = false
+
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "lua",
+        callback = function()
+          vim.opt_local.tabstop = 2     -- 显示 Tab 为 2 个空格
+          vim.opt_local.shiftwidth = 2   -- 自动缩进使用 2 个空格
+          vim.opt_local.softtabstop = 2  -- 编辑操作（如退格键）处理 2 个空格
+          vim.opt_local.expandtab = true -- 将 Tab 转换为空格
+        end
+      })
+
       require("nvim-treesitter.configs").setup({
         auto_install = true,
         sync_install = false,
