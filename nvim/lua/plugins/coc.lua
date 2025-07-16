@@ -125,6 +125,17 @@ vim.api.nvim_create_user_command("Fold", "call CocAction('fold', <f-args>)", {na
 -- Add `:OR` command for organize imports of the current buffer
 vim.api.nvim_create_user_command("OR", "call CocActionAsync('runCommand', 'editor.action.organizeImport')", {})
 
+-- 在保存文件前自动整理导入
+vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = "*.py",
+    callback = function()
+        -- 检查 Coc 是否可用
+        if vim.g.coc_service_initialized == 1 then
+            vim.cmd("silent! OR")
+        end
+    end
+})
+
 -- Add (Neo)Vim's native statusline support
 -- NOTE: Please see `:h coc-status` for integrations with external plugins that
 -- provide custom statusline: lightline.vim, vim-airline

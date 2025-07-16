@@ -1,12 +1,11 @@
 {
-  "coc.preferences.extensionUpdateCheck": "daily",
+  "extensions.updateCheck": "daily",
   "suggest.noselect": true,
   "suggest.enablePreselect": false,
   "codeLens.enable": true,
   "diagnostic.displayByAle": false,
   "diagnostic.refreshOnInsertMode": false,
   "diagnostic.checkCurrentLine": true,
-  "coc.preferences.formatOnSaveFiletypes": ["jsonc", "json"],
   "yaml.format.enable": true,
   "languageserver": {
     "bash": {
@@ -31,7 +30,7 @@
   "jedi.trace.server": "off",
   "jedi.jediSettings.autoImportModules": [],
   "jedi.jediSettings.caseInsensitiveCompletion": true,
-  "jedi.jediSettings.debug": true,
+  "jedi.jediSettings.debug": false,
   "jedi.executable.args": [],
   "jedi.codeAction.nameExtractFunction": "jls_extract_def",
   "jedi.codeAction.nameExtractVariable": "jls_extract_var",
@@ -55,9 +54,9 @@
     "__pycache__",
     "venv"
   ],
-  "ruff.useDetectRuffCommand": false,
+  "ruff.enable": true,
   "ruff.nativeBinaryPath": "/Users/jialei/.pyenv/versions/3.10.0/bin/ruff",
   "ruff.nativeServer": true,
-  "ruff.autoFixOnSave": true,
+  "ruff.autoFixOnSave": false,
   "ruff.lineLength": 88
 }

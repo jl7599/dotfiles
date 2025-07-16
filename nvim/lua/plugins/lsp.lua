@@ -1,39 +1,25 @@
-return {
-  -- {
-  --   "folke/trouble.nvim",
-  --   opts = {}, -- for default options, refer to the configuration section for custom setup.
-  --   cmd = "Trouble",
-  --   keys = {
-  --     {
-  --       "<leader>xx",
-  --       "<cmd>Trouble diagnostics toggle<cr>",
-  --       desc = "Diagnostics (Trouble)",
-  --     },
-  --     {
-  --       "<leader>xX",
-  --       "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
-  --       desc = "Buffer Diagnostics (Trouble)",
-  --     },
-  --     {
-  --       "<leader>cs",
-  --       "<cmd>Trouble symbols toggle focus=false<cr>",
-  --       desc = "Symbols (Trouble)",
-  --     },
-  --     {
-  --       "<leader>cl",
-  --       "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
-  --       desc = "LSP Definitions / references / ... (Trouble)",
-  --     },
-  --     {
-  --       "<leader>xL",
-  --       "<cmd>Trouble loclist toggle<cr>",
-  --       desc = "Location List (Trouble)",
-  --     },
-  --     {
-  --       "<leader>xQ",
-  --       "<cmd>Trouble qflist toggle<cr>",
-  --       desc = "Quickfix List (Trouble)",
-  --     },
-  --   },
-  -- }
+local M = {
+  "neovim/nvim-lspconfig",
+  branch = "master",
 }
+M.config = function()
+  vim.api.nvim_create_autocmd("BufWritePre", {
+      -- buffer = buffer,
+      callback = function()
+          vim.lsp.buf.format { async = false }
+      end
+  })
+
+  vim.lsp.config('ruff', {
+    init_options = {
+      settings = {
+        -- Ruff language server settings go here
+        configuration = "~/.config/python/ruff.toml"
+      }
+    }
+  })
+
+  vim.lsp.enable('ruff')
+end
+
+return M
