@@ -12,6 +12,7 @@ return {
     vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
     vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
     vim.keymap.set('n', '<leader>of', builtin.oldfiles, { desc = 'Oldfiles' })
+    vim.keymap.set('n', '<leader>ag', builtin.grep_string, { desc = 'Search cursor string' })
     vim.keymap.set('n', 'z=', builtin.spell_suggest )
     require('telescope').setup{
       defaults = {
@@ -65,6 +66,9 @@ return {
         -- }
         -- Now the picker_config_key will be applied every time you call this
         -- builtin picker
+        buffers = {
+          sort_lastused = true
+        }
       },
       extensions = {
         fzf = {
