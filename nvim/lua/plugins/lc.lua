@@ -15,20 +15,20 @@ return {
     lang = "python3",
 
     cn = { -- leetcode.cn
-        enabled = true, ---@type boolean
-        translator = true, ---@type boolean
-        translate_problems = true, ---@type boolean
+      enabled = true, ---@type boolean
+      translator = true, ---@type boolean
+      translate_problems = true, ---@type boolean
     },
 
     ---@type lc.storage
     storage = {
-        home = vim.fn.stdpath("data") .. "/leetcode",
-        cache = vim.fn.stdpath("cache") .. "/leetcode",
+      home = vim.fn.stdpath("data") .. "/leetcode",
+      cache = vim.fn.stdpath("cache") .. "/leetcode",
     },
 
     ---@type table<string, boolean>
     plugins = {
-        non_standalone = true,
+      non_standalone = true,
     },
 
     ---@type boolean
@@ -37,65 +37,65 @@ return {
     injector = {}, ---@type table<lc.lang, lc.inject>
 
     cache = {
-        update_interval = 60 * 60 * 24 * 30, ---@type integer 30 days
+      update_interval = 60 * 60 * 24 * 30, ---@type integer 30 days
     },
 
     editor = {
-        reset_previous_code = true, ---@type boolean
-        fold_imports = true, ---@type boolean
+      reset_previous_code = true, ---@type boolean
+      fold_imports = true, ---@type boolean
     },
 
     console = {
-        open_on_runcode = true, ---@type boolean
+      open_on_runcode = true, ---@type boolean
 
-        dir = "row", ---@type lc.direction
+      dir = "row", ---@type lc.direction
 
-        size = { ---@type lc.size
-            width = "90%",
-            height = "75%",
-        },
+      size = { ---@type lc.size
+        width = "90%",
+        height = "75%",
+      },
 
-        result = {
-            size = "60%", ---@type lc.size
-        },
+      result = {
+        size = "60%", ---@type lc.size
+      },
 
-        testcase = {
-            virt_text = true, ---@type boolean
+      testcase = {
+        virt_text = true, ---@type boolean
 
-            size = "40%", ---@type lc.size
-        },
+        size = "40%", ---@type lc.size
+      },
     },
 
     description = {
-        position = "left", ---@type lc.position
+      position = "left", ---@type lc.position
 
-        width = "40%", ---@type lc.size
+      width = "40%", ---@type lc.size
 
-        show_stats = true, ---@type boolean
+      show_stats = true, ---@type boolean
     },
 
     ---@type lc.picker
     picker = { provider = "telescope" },
 
     hooks = {
-        ---@type fun()[]
-        ["enter"] = {},
+      ---@type fun()[]
+      ["enter"] = {},
 
-        ---@type fun(question: lc.ui.Question)[]
-        ["question_enter"] = {},
+      ---@type fun(question: lc.ui.Question)[]
+      ["question_enter"] = {},
 
-        ---@type fun()[]
-        ["leave"] = {},
+      ---@type fun()[]
+      ["leave"] = {},
     },
 
     keys = {
-        toggle = { "q" }, ---@type string|string[]
-        confirm = { "<CR>" }, ---@type string|string[]
+      toggle = { "q" }, ---@type string|string[]
+      confirm = { "<CR>" }, ---@type string|string[]
 
-        reset_testcases = "r", ---@type string
-        use_testcase = "U", ---@type string
-        focus_testcases = "H", ---@type string
-        focus_result = "L", ---@type string
+      reset_testcases = "r", ---@type string
+      use_testcase = "U", ---@type string
+      focus_testcases = "H", ---@type string
+      focus_result = "L", ---@type string
     },
 
     ---@type lc.highlights
@@ -104,7 +104,7 @@ return {
       --   bg = "#FFFFFF",
       -- },
       ["normal"] = {
-          fg = "#A9A9A9",
+        fg = "#A9A9A9",
       },
     },
 

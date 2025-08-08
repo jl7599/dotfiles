@@ -16,7 +16,7 @@ vim.o.softtabstop = 4
 vim.o.smartindent = true
 vim.o.smarttab = true
 vim.o.list = true
-vim.o.listchars = 'tab:|\\ ,trail:.'
+vim.o.listchars = "tab:|\\ ,trail:."
 vim.o.scrolloff = 7
 vim.o.splitright = true
 vim.o.splitbelow = true
@@ -27,13 +27,13 @@ vim.o.foldlevel = 99
 vim.o.foldenable = true
 vim.o.hidden = true
 vim.o.updatetime = 100
-vim.o.shortmess = vim.o.shortmess .. 'c'
+vim.o.shortmess = vim.o.shortmess .. "c"
 vim.o.signcolumn = "yes"
-vim.o.formatoptions = vim.o.formatoptions:gsub('tc', '')
-vim.o.viewoptions = 'cursor,folds,slash,unix'
-vim.o.inccommand = 'split'
-vim.o.completeopt = 'longest,noinsert,menuone,noselect,preview'
-vim.o.completeopt = 'menuone,noinsert,noselect,preview'
+vim.o.formatoptions = vim.o.formatoptions:gsub("tc", "")
+vim.o.viewoptions = "cursor,folds,slash,unix"
+vim.o.inccommand = "split"
+vim.o.completeopt = "longest,noinsert,menuone,noselect,preview"
+vim.o.completeopt = "menuone,noinsert,noselect,preview"
 
 vim.cmd([[
 silent !mkdir -p $HOME/.config/nvim/tmp/backup
@@ -48,7 +48,9 @@ endif
 ]])
 
 -- 恢复上次编辑位置
-vim.cmd([[au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif]])
+vim.cmd(
+  [[au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif]]
+)
 
 vim.cmd([[autocmd TermOpen term://* startinsert]])
 
@@ -65,15 +67,14 @@ vim.cmd([[hi NonText ctermfg=gray guifg=grey10]])
 local config_path = vim.fn.stdpath("config")
 local current_config_path = config_path .. "/lua/machine_specific.lua"
 if not vim.loop.fs_stat(current_config_path) then
-    local current_config_file = io.open(current_config_path, "wb")
-    local default_config_path = config_path .. "/default_config/_machine_specific_default.lua"
-    local default_config_file = io.open(default_config_path, "rb")
-    if default_config_file and current_config_file then
-        local content = default_config_file:read("*all")
-        current_config_file:write(content)
-        io.close(default_config_file)
-        io.close(current_config_file)
-    end
+  local current_config_file = io.open(current_config_path, "wb")
+  local default_config_path = config_path .. "/default_config/_machine_specific_default.lua"
+  local default_config_file = io.open(default_config_path, "rb")
+  if default_config_file and current_config_file then
+    local content = default_config_file:read("*all")
+    current_config_file:write(content)
+    io.close(default_config_file)
+    io.close(current_config_file)
+  end
 end
 require("machine_specific")
-

@@ -1,9 +1,9 @@
 return {
-  'akinsho/bufferline.nvim',
+  "akinsho/bufferline.nvim",
   version = "*",
   config = function()
-    local bufferline = require('bufferline')
-    bufferline.setup {
+    local bufferline = require("bufferline")
+    bufferline.setup({
       options = {
         -- style_preset = bufferline.style_preset.no_italic,
         mode = "tabs",
@@ -14,16 +14,16 @@ return {
         diagnostics = "coc",
         indicator = {
           icon = "",
-          style = 'icon'
+          style = "icon",
         },
         show_duplicate_prefix = false, -- whether to show duplicate buffer prefix
         show_tab_indicators = false,
         separator_style = "thin",
         show_buffer_close_icons = false,
-      }
-    }
+      },
+    })
 
     -- custom keymap
     vim.keymap.set("n", "gb", "<Cmd>BufferLinePick<CR>")
-  end
+  end,
 }

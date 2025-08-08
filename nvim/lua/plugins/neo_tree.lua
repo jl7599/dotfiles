@@ -18,7 +18,7 @@ return {
         window = {
           position = "left",
           width = 25,
-        }
+        },
       })
 
       -- F3切换文件树
@@ -28,7 +28,6 @@ return {
 
       vim.keymap.set("n", "<leader>l", "<Cmd>Neotree reveal<CR>")
       -- vim.keymap.set("n", "<leader>b", "<Cmd>Neotree float buffers<CR>")
-
     end,
-  }
+  },
 }
