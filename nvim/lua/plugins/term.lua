@@ -1,6 +1,19 @@
+local fn = vim.fn
+
 return {
   "akinsho/toggleterm.nvim",
   config = function()
+    -- config
+    require("toggleterm").setup({
+      options = {
+        open_mapping = [[<c-\>]],
+        hide_numbers = true,
+        start_in_insert = true,
+        insert_mappings = true, -- Enable default insert mode mappings
+        terminal_mappings = true,
+      },
+    })
+
     -- custom keymap
     vim.cmd([[
       " set
@@ -26,15 +39,32 @@ return {
     -- if you only want these mappings for toggle term use term://*toggleterm#* instead
     vim.cmd("autocmd! TermOpen term://*toggleterm#* lua set_terminal_keymaps()")
 
-    -- config
-    require("toggleterm").setup({
-      options = {
-        open_mapping = [[<c-\>]],
-        hide_numbers = true,
-        start_in_insert = true,
-        insert_mappings = true, -- Enable default insert mode mappings
-        terminal_mappings = true,
+    local float_handler = function(term)
+      if not falsy(fn.mapcheck("jk", "t")) then
+        vim.keymap.del("t", "jk", { buffer = term.bufnr })
+        vim.keymap.del("t", "<esc>", { buffer = term.bufnr })
+      end
+    end
+
+    local Terminal = require("toggleterm.terminal").Terminal
+
+    local lazygit = Terminal:new({
+      cmd = "lazygit",
+      dir = "git_dir",
+      hidden = true,
+      direction = "float",
+      float_opts = {
+        width = vim.o.columns,
+        height = vim.o.lines,
+        border = "single",
       },
+      on_open = float_handler,
+    })
+
+    vim.keymap.set("n", "<leader>gs", function()
+      lazygit:toggle()
+    end, {
+      desc = "toggleterm: toggle lazygit",
     })
   end,
 }
