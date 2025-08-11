@@ -6,10 +6,11 @@ return {
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim",
   },
+  cmd = "Leet",
   opts = {
     -- configuration goes here
     ---@type string
-    arg = "leetcode.nvim",
+    -- arg = "leetcode.nvim",
 
     ---@type lc.lang
     lang = "python3",
