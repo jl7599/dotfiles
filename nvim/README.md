@@ -23,6 +23,7 @@
       - [LSP \& Code Intelligence (CoC)](#lsp--code-intelligence-coc)
       - [Terminal](#terminal)
       - [Editor Utilities](#editor-utilities)
+      - [OpenCode (AI Assistant)](#opencode-ai-assistant)
       - [Commands](#commands)
 
 
@@ -169,6 +170,14 @@ Lazy.nvim will automatically install all plugins on first launch.
 | `[c`       | go to context (treesitter)    | n    |
 | `Ctrl` `n` | expand selection (treesitter) | n    |
 | `z=`       | spell suggestions             | n    |
+
+#### OpenCode (AI Assistant)
+| Shortcut    | Action                            | Mode |
+| ----------- | --------------------------------- | ---- |
+| `Space` `k` | ask opencode (with @this context) | n, x |
+| `Space` `x` | opencode action menu              | n, x |
+| `Space` `i` | toggle opencode                   | n, t |
+| `go`        | opencode operator (e.g. goip)     | n    |
 
 #### Commands
 | Command   | Action                |
